@@ -54,3 +54,47 @@ Example:
     "summary": "Air conditioner is leaking"
   }
 }
+```
+
+Additional integration events may use:
+
+- `evt_demo_002`
+- `evt_demo_003`
+- `evt_duplicate_test`
+
+These IDs exist only for demonstrations and tests.
+
+## Duplicate-Delivery Scenario
+
+At least one mock FormRelay event will deliberately be delivered twice.
+
+The expected behavior is:
+
+1. first delivery creates the request;
+2. the event ID is recorded;
+3. second delivery is recognized as already processed;
+4. no second request is created.
+
+This allows the demo to show idempotent webhook handling without relying on a real third-party service.
+
+## Dates and Timestamps
+
+Seed data may use fixed timestamps so tests and demonstrations are reproducible.
+
+No timestamps will come from private production systems.
+
+## Credentials
+
+No real external credentials are required.
+
+If the mock webhook later uses an authentication token:
+
+- the value will come from an environment variable;
+- `.env` will not be committed;
+- `.env.example` will contain only an obviously fake example.
+
+## Rule
+
+If a piece of data originated from a real private system, it does not belong in this repository.
+
+When realistic examples are needed, create new fictional equivalents instead.

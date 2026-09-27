@@ -54,3 +54,101 @@ Install dependencies:
 
 ```bash
 npm install
+```
+
+Run the service:
+
+```bash
+npm start
+```
+
+Check it:
+
+```bash
+curl http://127.0.0.1:3000/health
+```
+
+Expected response:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+For development:
+
+```bash
+npm run dev
+```
+
+Type-check:
+
+```bash
+npm run typecheck
+```
+
+## Current Endpoints
+
+### `GET /`
+
+Returns basic service information.
+
+### `GET /health`
+
+Returns a simple health response.
+
+## Planned Core Workflow
+
+A request will contain:
+
+- ID
+- requester
+- summary
+- status
+- creation time
+- last modification time
+
+Statuses:
+
+`NEW → IN_PROGRESS → DONE`
+
+## Planned Integration
+
+**FormRelay** is a fictional website-form provider used to demonstrate webhook integration behavior.
+
+The integration will eventually demonstrate:
+
+- authenticated webhook requests;
+- persisted event IDs;
+- duplicate-delivery detection;
+- idempotent processing.
+
+No external service is required.
+
+## Acceptance Goals
+
+The completed demonstration will verify:
+
+1. valid requests can be created;
+2. invalid requests are rejected without being stored;
+3. requests can be listed;
+4. status changes persist;
+5. a valid integration event creates exactly one request;
+6. delivering the same integration event twice does not create a duplicate request.
+
+## Synthetic Data
+
+This project contains no production customer data.
+
+See [`docs/synthetic-data.md`](docs/synthetic-data.md).
+
+## Scope
+
+This is intentionally a small engineering demonstration.
+
+It is not intended to be a complete ticketing, CRM, help-desk, or workflow-management product.
+
+## License
+
+MIT
