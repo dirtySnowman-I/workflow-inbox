@@ -31,13 +31,13 @@ Currently implemented:
 - [x] Synthetic-data policy
 - [x] SQLite request/integration schema
 - [x] Deterministic synthetic seed data
+- [x] Create request endpoint
+- [x] List requests endpoint
+- [x] Request input validation
 
 Planned:
 
-- [ ] Create request
-- [ ] List requests
 - [ ] Update request status
-- [ ] Input validation
 - [ ] Synthetic JSON import
 - [ ] Mock FormRelay webhook
 - [ ] Duplicate-event protection
@@ -108,13 +108,26 @@ The generated database is stored under `data/` and is not committed to Git.
 
 ## Current Endpoints
 
-### `GET /`
+### `GET /requests`
 
-Returns basic service information.
+Returns all requests ordered by ID.
 
-### `GET /health`
+### `POST /requests`
 
-Returns a simple health response.
+Creates a new request.
+
+Example request:
+
+```json
+{
+  "requester": "Sam Patel",
+  "summary": "Office printer is showing a paper-feed error"
+}
+```
+
+New requests begin with status `NEW`.
+
+Invalid input returns HTTP `400` using a consistent validation-error structure.
 
 ## Planned Core Workflow
 

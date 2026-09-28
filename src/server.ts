@@ -1,4 +1,8 @@
 import Fastify from "fastify";
+import { initializeDatabase } from "./db/database.js";
+import { requestRoutes } from "./requests/routes.js";
+
+initializeDatabase();
 
 const app = Fastify({
   logger: true,
@@ -16,6 +20,8 @@ app.get("/health", async () => {
     status: "ok",
   };
 });
+
+app.register(requestRoutes);
 
 async function start() {
   const port = Number(process.env.PORT ?? 3000);
