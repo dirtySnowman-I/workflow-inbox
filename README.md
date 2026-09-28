@@ -19,6 +19,7 @@ Requests can eventually arrive either:
 
 All project data is synthetic.
 
+
 ## Current Status
 
 The project is under active development.
@@ -28,10 +29,11 @@ Currently implemented:
 - [x] Minimal Fastify/TypeScript service
 - [x] Health endpoint
 - [x] Synthetic-data policy
+- [x] SQLite request/integration schema
+- [x] Deterministic synthetic seed data
 
 Planned:
 
-- [ ] SQLite persistence
 - [ ] Create request
 - [ ] List requests
 - [ ] Update request status
@@ -87,6 +89,22 @@ Type-check:
 ```bash
 npm run typecheck
 ```
+## Database Setup
+
+Initialize the SQLite schema:
+
+```bash
+npm run db:init
+```
+
+Load deterministic synthetic demo data:
+
+```bash
+npm run db:seed
+```
+
+The generated database is stored under `data/` and is not committed to Git.
+
 
 ## Current Endpoints
 
