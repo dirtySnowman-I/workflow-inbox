@@ -34,15 +34,15 @@ Currently implemented:
 - [x] Create request endpoint
 - [x] List requests endpoint
 - [x] Request input validation
+- [x] Update request status
+- [x] Browser inbox interface
 
 Planned:
 
-- [ ] Update request status
 - [ ] Synthetic JSON import
 - [ ] Mock FormRelay webhook
 - [ ] Duplicate-event protection
 - [ ] Bounded retry behavior
-- [ ] Browser interface
 - [ ] Failure-path checks
 
 ## Run Locally
@@ -128,6 +128,22 @@ Example request:
 New requests begin with status `NEW`.
 
 Invalid input returns HTTP `400` using a consistent validation-error structure.
+
+### `PATCH /requests/:id/status`
+
+Moves a request through the supported workflow:
+
+`NEW → IN_PROGRESS → DONE`
+
+Invalid status values return `400`, missing requests return `404`, and invalid transitions return `409`.
+
+### Browser interface
+
+Open:
+
+`/app/`
+
+The browser interface lists persisted requests and allows valid status transitions.
 
 ## Planned Core Workflow
 
