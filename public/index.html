@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  <title>Workflow Inbox</title>
+  <link rel="stylesheet" href="/app/styles.css">
+</head>
+
+<body>
+  <main class="page">
+    <header class="page-header">
+      <p class="eyebrow">Northstar Office Services</p>
+      <h1>Workflow Inbox</h1>
+      <p>Service requests waiting for review.</p>
+    </header>
+
+    <section aria-labelledby="requests-heading">
+      <div class="section-header">
+        <h2 id="requests-heading">Requests</h2>
+        <button id="refresh-button" type="button">
+          Refresh
+        </button>
+      </div>
+
+      <p id="message" role="status"></p>
+
+      <div id="request-list"></div>
+    </section>
+  </main>
+
+  <script src="/app/app.js" defer></script>
+</body>
+</html>

@@ -1,11 +1,21 @@
 import Fastify from "fastify";
 import { initializeDatabase } from "./db/database.js";
 import { requestRoutes } from "./requests/routes.js";
+import fastifyStatic from "@fastify/static";
+import { fileURLToPath } from "node:url";
+
 
 initializeDatabase();
 
 const app = Fastify({
   logger: true,
+});
+
+app.register(fastifyStatic, {
+  root: fileURLToPath(
+    new URL("../public/", import.meta.url),
+  ),
+  prefix: "/app/",
 });
 
 app.get("/", async () => {
